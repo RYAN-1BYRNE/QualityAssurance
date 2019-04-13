@@ -24,7 +24,7 @@ public class BikeSystem {
         int reflectorsFitted;
 
         if (bikeCount >= bikeHoldLimit || bikeExists(owner, model)) {
-            return true;
+            return false;
         }
 
         if (type.equalsIgnoreCase("bike")) {
@@ -62,7 +62,7 @@ public class BikeSystem {
 
     public boolean bikeExists(String owner, String model) {
         for (Bike bike: bikeList) {
-            if (bike.getOwner().equalsIgnoreCase(owner) || bike.getModel().equalsIgnoreCase(model)) {
+            if (bike.getOwner().equalsIgnoreCase(owner) && bike.getModel().equalsIgnoreCase(model)) {
                 return true;
             }
         }
@@ -77,6 +77,7 @@ public class BikeSystem {
 
     public void closeGarage() {
         bikeList.clear();
+        bikeCount = 0;
     }
 
     public void printServiceIntervals() {
